@@ -10,6 +10,6 @@ java {
 }
 
 dependencies {
-    implementation(libs.agp)
-    implementation(libs.kotlin.gradleplugin)
+    compileOnly(libs.agp)
+    compileOnly(libs.kotlin.gradleplugin)
 }

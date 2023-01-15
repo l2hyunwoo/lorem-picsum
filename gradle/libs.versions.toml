@@ -10,6 +10,7 @@ lifecycle = "2.5.1"
 startup = "1.1.1"
 security = "1.0.0"
 splash = "1.0.0"
+desugarJdk = "1.2.2"
 
 material = "1.7.0"
 
@@ -36,6 +37,7 @@ appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat"
 lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 startup = { module = "androidx.startup:startup-runtime", version.ref = "startup" }
 security = { module = "androidx.security:security-crypto", version.ref = "security" }
+desugarLibs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugarJdk" }
 
 material = { module = "com.google.android.material:material", version.ref = "material" }
 
