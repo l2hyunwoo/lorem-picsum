@@ -3,6 +3,7 @@ kotlin = "1.7.20"
 kotlinx-serialization-json = "1.4.1"
 kotlinx-serialization-converter = "0.8.0"
 kotlinx-datetime = "0.4.0"
+kotlinx-coroutines = "1.6.4"
 corektx = "1.9.0"
 appcompat = "1.5.1"
 activity = "1.6.1"
@@ -27,9 +28,12 @@ retrofit = "2.9.0"
 
 [libraries]
 agp = { module = "com.android.tools.build:gradle", version.ref = "gradleplugin" }
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotlin-gradleplugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
 kotlin-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinx-datetime" }
+kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
 
 core-ktx = { module = "androidx.core:core-ktx", version.ref = "corektx" }
 splash = { module = "androidx.core:core-splashscreen", version.ref = "splash" }
