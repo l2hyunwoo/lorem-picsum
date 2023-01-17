@@ -38,7 +38,7 @@ class AndroidKotlinPlugin : Plugin<Project> {
         }
 
         dependencies {
-            "coreLibraryDesugaring"(libs.findLibrary("desugarJdkLibs").get())
+            "coreLibraryDesugaring"(libs.findLibrary("desugarLibs").get())
             "implementation"(libs.findLibrary("kotlin.stdlib").get())
             "implementation"(libs.findLibrary("kotlin.coroutines.android").get())
             "implementation"(libs.findLibrary("kotlin.datetime").get())
