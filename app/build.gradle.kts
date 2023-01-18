@@ -26,6 +26,9 @@ android {
 
 dependencies {
     implementation(project(":core:design"))
+    implementation(project(":core:common"))
+    implementation(project(":feature:album"))
+    implementation(project(":feature:profile"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.junit)
     androidTestImplementation(libs.androidx.test.espresso)
