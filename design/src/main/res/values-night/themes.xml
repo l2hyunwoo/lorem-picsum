@@ -1,6 +1,6 @@
-
 <resources>
-    <style name="AppTheme" parent="Theme.Material3.Dark.NoActionBar">
+
+    <style name="Theme.Picsum" parent="Theme.Material3.Dark.NoActionBar">
         <item name="colorPrimary">@color/md_theme_dark_primary</item>
         <item name="colorOnPrimary">@color/md_theme_dark_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_dark_primaryContainer</item>
@@ -27,5 +27,13 @@
         <item name="colorOnSurfaceInverse">@color/md_theme_dark_inverseOnSurface</item>
         <item name="colorSurfaceInverse">@color/md_theme_dark_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_dark_inversePrimary</item>
+
+        <item name="textAppearanceHeadline1">@style/TextAppearance.Picsum.Head1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.Picsum.Head2</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.Picsum.SubTitle</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.Picsum.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.Picsum.Body2</item>
+
+        <item name="android:statusBarColor">@color/md_theme_dark_background</item>
     </style>
 </resources>
