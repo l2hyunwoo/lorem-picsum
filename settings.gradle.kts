@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "picsum"
 include(":app")
 include(":design")
+include(":album")
