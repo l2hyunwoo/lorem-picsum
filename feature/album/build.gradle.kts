@@ -11,5 +11,6 @@ android {
 }
 
 dependencies {
-
+    implementation(project(":core:design"))
+    implementation(project(":core:common"))
 }
