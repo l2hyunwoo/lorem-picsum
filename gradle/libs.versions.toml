@@ -7,6 +7,7 @@ kotlinx-coroutines = "1.6.4"
 corektx = "1.9.0"
 appcompat = "1.5.1"
 activity = "1.6.1"
+fragment = "1.5.5"
 lifecycle = "2.5.1"
 startup = "1.1.1"
 security = "1.0.0"
@@ -42,6 +43,7 @@ lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", v
 startup = { module = "androidx.startup:startup-runtime", version.ref = "startup" }
 security = { module = "androidx.security:security-crypto", version.ref = "security" }
 desugarLibs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugarJdk" }
+fragment = { module = "androidx.fragment:fragment-ktx", version.ref = "fragment" }
 
 material = { module = "com.google.android.material:material", version.ref = "material" }
 

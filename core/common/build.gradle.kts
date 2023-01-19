@@ -3,7 +3,8 @@ plugins {
 }
 
 android {
-    namespace = "com.github.hyunwoo.picsum.design"
+    namespace = "com.github.hyunwoo.picsum.common"
+    compileSdk = 33
 
     defaultConfig {
         consumerProguardFiles("consumer-rules.pro")
