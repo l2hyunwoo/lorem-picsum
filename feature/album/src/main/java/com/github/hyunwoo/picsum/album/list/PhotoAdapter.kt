@@ -8,7 +8,9 @@ import com.github.hyunwoo.picsum.album.databinding.ItemPhotoBinding
 import com.github.hyunwoo.picsum.album.model.PhotoUiModel
 import com.github.hyunwoo.picsum.common.view.recycerview.ItemDiffCallback
 
-internal class PhotoAdapter : ListAdapter<PhotoUiModel, PhotoAdapter.PhotoViewHolder>(
+internal class PhotoAdapter(
+    private val listener: ItemClickListener
+) : ListAdapter<PhotoUiModel, PhotoAdapter.PhotoViewHolder>(
     ItemDiffCallback(
         onContentsTheSame = { old, new -> old.id == new.id },
         onItemsTheSame = { old, new -> old == new }
@@ -16,11 +18,19 @@ internal class PhotoAdapter : ListAdapter<PhotoUiModel, PhotoAdapter.PhotoViewHo
 ) {
     private lateinit var inflater: LayoutInflater
 
+    fun interface ItemClickListener {
+        fun onItemClick(photo: PhotoUiModel)
+    }
+
     class PhotoViewHolder(
-        private val binding: ItemPhotoBinding
+        private val binding: ItemPhotoBinding,
+        private val listener: ItemClickListener
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(item: PhotoUiModel) {
             binding.txtItem.text = item.author
+            binding.root.setOnClickListener {
+                listener.onItemClick(item)
+            }
         }
     }
 
@@ -29,7 +39,7 @@ internal class PhotoAdapter : ListAdapter<PhotoUiModel, PhotoAdapter.PhotoViewHo
             inflater = LayoutInflater.from(parent.context)
         }
         val binding = ItemPhotoBinding.inflate(inflater, parent, false)
-        return PhotoViewHolder(binding)
+        return PhotoViewHolder(binding, listener)
     }
 
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {

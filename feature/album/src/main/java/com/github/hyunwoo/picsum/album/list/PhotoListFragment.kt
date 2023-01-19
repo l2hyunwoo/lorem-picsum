@@ -3,6 +3,7 @@ package com.github.hyunwoo.picsum.album.list
 import android.os.Bundle
 import android.view.View
 import com.github.hyunwoo.picsum.album.databinding.FragmentPhotoListBinding
+import com.github.hyunwoo.picsum.album.detail.DetailActivity
 import com.github.hyunwoo.picsum.common.fragment.BindingFragment
 
 class PhotoListFragment :
@@ -12,5 +13,8 @@ class PhotoListFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.rvPhotos.adapter = PhotoAdapter {
+            startActivity(DetailActivity.getIntent(requireContext(), it))
+        }
     }
 }

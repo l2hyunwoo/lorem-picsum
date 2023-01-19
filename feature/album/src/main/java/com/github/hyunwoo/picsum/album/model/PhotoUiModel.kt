@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-internal data class PhotoUiModel(
+data class PhotoUiModel(
     val id: Int,
     val author: String,
     val width: Int,
