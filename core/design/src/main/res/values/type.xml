@@ -29,10 +29,12 @@
     <style name="TextAppearance.Picsum.Body1">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?attr/colorOnBackground</item>
     </style>
 
     <style name="TextAppearance.Picsum.Body2">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:textColor">?attr/colorOnBackground</item>
     </style>
 </resources>
