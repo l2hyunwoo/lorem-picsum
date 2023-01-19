@@ -9,8 +9,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
+typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
+
 abstract class BindingFragment<B : ViewBinding>(
-    @LayoutRes private val resId: Int
+    private val bindingInflater: Inflate<B>
 ) : Fragment() {
     private var _binding: B? = null
     protected val binding: B
@@ -21,7 +23,7 @@ abstract class BindingFragment<B : ViewBinding>(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = DataBindingUtil.inflate(inflater, resId, container, false)
+        _binding = bindingInflater(inflater, container, false)
         return binding.root
     }
 }
