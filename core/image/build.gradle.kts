@@ -1,5 +1,6 @@
 plugins {
     id("com.github.hyunwoo.picsum.feature")
+    id("de.mannodermaus.android-junit5")
 }
 
 android {
@@ -7,13 +8,13 @@ android {
     compileSdk = 33
 
     defaultConfig {
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 }
 
 dependencies {
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.test.junit)
-    androidTestImplementation(libs.androidx.test.espresso)
+    testImplementation(libs.truth)
+    testImplementation(libs.junit5.api)
+    testImplementation(libs.junit5.params)
+    testRuntimeOnly(libs.junit5.engine)
 }

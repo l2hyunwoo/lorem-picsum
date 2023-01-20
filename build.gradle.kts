@@ -3,6 +3,9 @@ buildscript {
         google()
         mavenCentral()
     }
+    dependencies {
+        classpath(libs.junit5.classpath)
+    }
 }
 
 plugins {
