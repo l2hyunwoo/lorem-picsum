@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.hyunwoo.picsum.album.databinding.ItemPhotoBinding
 import com.github.hyunwoo.picsum.album.model.PhotoUiModel
 import com.github.hyunwoo.picsum.common.view.recycerview.ItemDiffCallback
+import com.github.hyunwoo.picsum.image.load
 
 internal class PhotoAdapter(
     private val listener: ItemClickListener
@@ -31,6 +32,7 @@ internal class PhotoAdapter(
             binding.root.setOnClickListener {
                 listener.onItemClick(item)
             }
+            binding.imgItem.load(item.picture)
         }
     }
 

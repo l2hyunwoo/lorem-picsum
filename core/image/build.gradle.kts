@@ -13,6 +13,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:common"))
     implementation(platform(libs.okhttp.bom))
     implementation(libs.okhttp)
     implementation(libs.okhttp.logging.interceptor)
