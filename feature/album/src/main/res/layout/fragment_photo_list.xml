@@ -37,4 +37,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_album"
         tools:listitem="@layout/item_photo" />
+
+    <include
+        android:id="@+id/layout_loading_list"
+        layout="@layout/layout_loading"
+        android:visibility="gone"
+        tools:visiblity="visible" />
+
+    <include
+        android:id="@+id/layout_error_list"
+        layout="@layout/layout_error"
+        android:visibility="gone"
+        tools:visiblity="visible" />
 </androidx.constraintlayout.widget.ConstraintLayout>

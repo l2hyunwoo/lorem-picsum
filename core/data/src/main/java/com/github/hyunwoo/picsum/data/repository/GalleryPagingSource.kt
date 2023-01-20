@@ -1,6 +1,5 @@
 package com.github.hyunwoo.picsum.data.repository
 
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.github.hyunwoo.picsum.data.api.GalleryApi
@@ -25,14 +24,8 @@ class GalleryPagingSource @Inject constructor(
         val currentPosition = params.key ?: START_POSITION_INDEX
 
         val response = runCatching { network.getPhotos(currentPosition) }
-            .getOrElse {
-                Log.e("Nunu", "error", it)
-                return LoadResult.Error(it)
-            }
-            .map {
-                Log.d("Nunu", "load: $it")
-                it.asDomainModel()
-            }
+            .getOrElse { return LoadResult.Error(it) }
+            .map { it.asDomainModel() }
 
         return LoadResult.Page(
             data = response,

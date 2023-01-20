@@ -10,3 +10,8 @@ android {
         consumerProguardFiles("consumer-rules.pro")
     }
 }
+
+dependencies {
+    implementation(project(":core:design"))
+    implementation(libs.paging.runtime)
+}
