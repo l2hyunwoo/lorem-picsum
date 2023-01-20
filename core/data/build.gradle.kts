@@ -19,6 +19,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":domain"))
     implementation(platform(libs.okhttp.bom))
     implementation(libs.bundles.okhttp)
     implementation(libs.retrofit)
