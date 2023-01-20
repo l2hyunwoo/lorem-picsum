@@ -1,7 +1,7 @@
 package com.github.hyunwoo.picsum.domain.entity
 
 data class Photo(
-    val id: String,
+    val id: Int,
     val author: String,
     val width: Int,
     val height: Int,

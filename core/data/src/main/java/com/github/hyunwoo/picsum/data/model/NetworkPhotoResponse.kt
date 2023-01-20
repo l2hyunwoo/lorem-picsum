@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class NetworkPhotoResponse(
     @SerialName("id")
-    val id: String,
+    val id: Int,
     @SerialName("author")
     val author: String,
     @SerialName("width")

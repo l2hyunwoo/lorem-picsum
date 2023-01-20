@@ -1,4 +1,4 @@
-package com.github.hyunwoo.picsum.data.di
+package com.github.hyunwoo.picsum.di
 
 import com.github.hyunwoo.picsum.data.repository.GalleryRepositoryImpl
 import com.github.hyunwoo.picsum.domain.repository.GalleryRepository

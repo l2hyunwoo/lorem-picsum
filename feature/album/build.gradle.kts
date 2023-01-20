@@ -13,4 +13,6 @@ android {
 dependencies {
     implementation(project(":core:design"))
     implementation(project(":core:common"))
+    implementation(project(":domain"))
+    implementation(libs.fragment)
 }

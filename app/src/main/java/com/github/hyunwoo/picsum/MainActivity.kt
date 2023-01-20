@@ -7,7 +7,9 @@ import com.github.hyunwoo.picsum.album.list.PhotoListFragment
 import com.github.hyunwoo.picsum.common.activity.BindingActivity
 import com.github.hyunwoo.picsum.databinding.ActivityMainBinding
 import com.github.hyunwoo.picsum.profile.ProfileFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BindingActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
