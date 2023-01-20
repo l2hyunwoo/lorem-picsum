@@ -27,8 +27,10 @@ android {
 dependencies {
     implementation(project(":core:design"))
     implementation(project(":core:common"))
+    implementation(project(":core:data"))
     implementation(project(":feature:album"))
     implementation(project(":feature:profile"))
+    implementation(project(":domain"))
     implementation(libs.fragment)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.junit)

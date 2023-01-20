@@ -2,7 +2,7 @@ package com.github.hyunwoo.picsum.album.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ListAdapter
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.github.hyunwoo.picsum.album.databinding.ItemPhotoBinding
 import com.github.hyunwoo.picsum.album.model.PhotoUiModel
@@ -10,7 +10,7 @@ import com.github.hyunwoo.picsum.common.view.recycerview.ItemDiffCallback
 
 internal class PhotoAdapter(
     private val listener: ItemClickListener
-) : ListAdapter<PhotoUiModel, PhotoAdapter.PhotoViewHolder>(
+) : PagingDataAdapter<PhotoUiModel, PhotoAdapter.PhotoViewHolder>(
     ItemDiffCallback(
         onContentsTheSame = { old, new -> old.id == new.id },
         onItemsTheSame = { old, new -> old == new }
@@ -43,6 +43,6 @@ internal class PhotoAdapter(
     }
 
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
-        holder.onBind(getItem(position))
+        getItem(position)?.let { holder.onBind(it) }
     }
 }

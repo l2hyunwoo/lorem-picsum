@@ -13,6 +13,7 @@ startup = "1.1.1"
 security = "1.0.0"
 splash = "1.0.0"
 desugarJdk = "1.2.2"
+paging = "3.1.1"
 
 material = "1.7.0"
 
@@ -21,6 +22,7 @@ mannodermaus-junit5 = "1.8.2.1"
 androidx-test-junit = "1.1.5"
 androidx-test-espresso = "3.5.1"
 truth = "1.1.3"
+inject = "1"
 
 gradleplugin = "7.4.0"
 dagger-hilt = "2.44.2"
@@ -35,6 +37,7 @@ kotlin-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-s
 kotlin-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinx-datetime" }
 kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
+javax-inject = { module = "javax.inject:javax.inject", version.ref = "inject" }
 
 core-ktx = { module = "androidx.core:core-ktx", version.ref = "corektx" }
 splash = { module = "androidx.core:core-splashscreen", version.ref = "splash" }
@@ -44,6 +47,8 @@ startup = { module = "androidx.startup:startup-runtime", version.ref = "startup"
 security = { module = "androidx.security:security-crypto", version.ref = "security" }
 desugarLibs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugarJdk" }
 fragment = { module = "androidx.fragment:fragment-ktx", version.ref = "fragment" }
+paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
+paging-common = { module = "androidx.paging:paging-common", version.ref = "paging" }
 
 material = { module = "com.google.android.material:material", version.ref = "material" }
 
