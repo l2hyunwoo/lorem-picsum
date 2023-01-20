@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import org.junit.jupiter.params.provider.ValueSource
 
-class HashTransformerTest {
+internal class HashTransformerTest {
     private val hashTransformer: HashTransformer = HashTransformerImpl()
     @ParameterizedTest
     @MethodSource("sameInputSameHash")
