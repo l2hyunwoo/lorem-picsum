@@ -13,6 +13,7 @@ startup = "1.1.1"
 security = "1.0.0"
 splash = "1.0.0"
 desugarJdk = "1.2.2"
+paging = "3.1.1"
 
 material = "1.7.0"
 
@@ -46,6 +47,8 @@ startup = { module = "androidx.startup:startup-runtime", version.ref = "startup"
 security = { module = "androidx.security:security-crypto", version.ref = "security" }
 desugarLibs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugarJdk" }
 fragment = { module = "androidx.fragment:fragment-ktx", version.ref = "fragment" }
+paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
+paging-common = { module = "androidx.paging:paging-common", version.ref = "paging" }
 
 material = { module = "com.google.android.material:material", version.ref = "material" }
 
