@@ -2,8 +2,6 @@ package com.github.hyunwoo.picsum.image.cache.memory
 
 import android.graphics.Bitmap
 import androidx.collection.LruCache
-import com.github.hyunwoo.picsum.common.log.debugLog
-
 
 internal object BitmapMemoryCache {
     private const val KILOBYTE_UNIT = 1024
@@ -17,13 +15,8 @@ internal object BitmapMemoryCache {
         }
     }
 
-    init {
-        debugLog("RuntimeMemory Size $maxMemory")
-        debugLog("BitmapMemoryCache initialized with max cache size: $maxCacheSize MB")
-    }
-
     fun setCacheSize(cacheSize: Int, cacheSizeUnit: CacheSizeUnit) {
-        val newCacheSize =  CacheSizeUnit.calculate(cacheSize, cacheSizeUnit)
+        val newCacheSize = CacheSizeUnit.calculate(cacheSize, cacheSizeUnit)
         require(newCacheSize < maxMemory) {
             "Cache size is too large. Max cache size is $maxMemory MB"
         }

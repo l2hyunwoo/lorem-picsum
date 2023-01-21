@@ -2,13 +2,16 @@ package com.github.hyunwoo.picsum.image
 
 import android.content.Context
 import android.widget.ImageView
-import androidx.core.view.doOnAttach
+import androidx.core.view.doOnLayout
 import com.github.hyunwoo.picsum.image.config.ImageConfig
 import com.github.hyunwoo.picsum.image.config.ImageMimeType
 import com.github.hyunwoo.picsum.image.config.ServiceLocator
 import com.github.hyunwoo.picsum.image.key.HashTransformer
 import com.github.hyunwoo.picsum.image.key.HashType
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 
 object ImageLoader {
     private val mainScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
@@ -37,7 +40,9 @@ object ImageLoader {
 }
 
 fun ImageView.load(url: String) {
-    doOnAttach {
-        ImageLoader.load(url, this)
+    doOnLayout {
+        (it as? ImageView)?.let { imageView ->
+            ImageLoader.load(url, imageView)
+        }
     }
 }

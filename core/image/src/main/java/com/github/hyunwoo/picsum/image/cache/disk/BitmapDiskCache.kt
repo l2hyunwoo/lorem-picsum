@@ -2,10 +2,10 @@ package com.github.hyunwoo.picsum.image.cache.disk
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import com.github.hyunwoo.picsum.common.log.errorLog
 import com.github.hyunwoo.picsum.image.config.ImageConfig
 import com.github.hyunwoo.picsum.image.config.ImageMimeType
+import com.github.hyunwoo.picsum.image.utils.decodeSampledBitmap
 import com.jakewharton.disklrucache.DiskLruCache
 import okio.Buffer
 import okio.sink
@@ -78,12 +78,7 @@ internal object BitmapDiskCache {
         val key = config.identifier
         val snapshot = diskLruCache?.get(key)
         return snapshot?.getInputStream(0)?.use {
-            Bitmap.createScaledBitmap(
-                Bitmap.createBitmap(BitmapFactory.decodeStream(it)),
-                config.width,
-                config.height,
-                true
-            )
+            it.readBytes().decodeSampledBitmap(config.height, config.width)
         }
     }
 }
