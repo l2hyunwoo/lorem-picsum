@@ -1,4 +1,4 @@
-package com.github.hyunwoo.picsum.image
+package com.github.hyunwoo.picsum.image.config
 
 import android.content.Context
 import com.github.hyunwoo.picsum.image.cache.disk.BitmapDiskCache
@@ -17,16 +17,16 @@ internal object ServiceLocator {
     val remoteResourceFetcher: RemoteResourceFetcher by lazy { RemoteResourceFetcher() }
 
     fun getOkHttpClient(): OkHttpClient {
-        if (!::okHttpClient.isInitialized) {
+        if (!ServiceLocator::okHttpClient.isInitialized) {
             throw IllegalStateException("OkHttpClient must be initialized before use, call init first.")
         }
         return okHttpClient
     }
 
     fun init(context: Context) {
-        if (!::okHttpClient.isInitialized) {
+        if (!ServiceLocator::okHttpClient.isInitialized) {
             synchronized(this) {
-                if (!::okHttpClient.isInitialized) {
+                if (!ServiceLocator::okHttpClient.isInitialized) {
                     okHttpClient = OkHttpClient.Builder()
                         .addInterceptor(
                             HttpLoggingInterceptor().apply {

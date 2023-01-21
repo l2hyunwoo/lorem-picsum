@@ -4,6 +4,7 @@ import android.widget.ImageView
 import com.github.hyunwoo.picsum.image.cache.disk.BitmapDiskCache
 import com.github.hyunwoo.picsum.image.cache.memory.BitmapMemoryCache
 import com.github.hyunwoo.picsum.image.config.ImageConfig
+import com.github.hyunwoo.picsum.image.config.ServiceLocator
 
 internal object ImageLoaderDelegate {
     private val diskCache = ServiceLocator.diskCache

@@ -2,7 +2,7 @@ package com.github.hyunwoo.picsum.image.fetch
 
 import android.graphics.Bitmap
 import com.github.hyunwoo.picsum.common.log.errorLog
-import com.github.hyunwoo.picsum.image.ServiceLocator
+import com.github.hyunwoo.picsum.image.config.ServiceLocator
 import com.github.hyunwoo.picsum.image.config.ImageConfig
 import com.github.hyunwoo.picsum.image.utils.decodeSampledBitmap
 import kotlinx.coroutines.suspendCancellableCoroutine

@@ -5,6 +5,7 @@ import android.widget.ImageView
 import androidx.core.view.doOnAttach
 import com.github.hyunwoo.picsum.image.config.ImageConfig
 import com.github.hyunwoo.picsum.image.config.ImageMimeType
+import com.github.hyunwoo.picsum.image.config.ServiceLocator
 import com.github.hyunwoo.picsum.image.key.HashTransformer
 import com.github.hyunwoo.picsum.image.key.HashType
 import kotlinx.coroutines.*
