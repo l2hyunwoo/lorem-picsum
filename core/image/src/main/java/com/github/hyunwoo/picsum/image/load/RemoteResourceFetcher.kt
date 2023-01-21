@@ -3,6 +3,7 @@ package com.github.hyunwoo.picsum.image.load
 import android.graphics.Bitmap
 import com.github.hyunwoo.picsum.common.log.errorLog
 import com.github.hyunwoo.picsum.image.ServiceLocator
+import com.github.hyunwoo.picsum.image.config.ImageConfig
 import com.github.hyunwoo.picsum.image.utils.decodeSampledBitmap
 import kotlinx.coroutines.suspendCancellableCoroutine
 import okhttp3.*
@@ -12,11 +13,8 @@ import kotlin.coroutines.resumeWithException
 class RemoteResourceFetcher(
     private val client: OkHttpClient = ServiceLocator.getOkHttpClient()
 ) {
-    suspend fun execute(
-        url: String,
-        width: Int,
-        height: Int
-    ): Bitmap? = suspendCancellableCoroutine {
+    suspend fun execute(config: ImageConfig): Bitmap? = suspendCancellableCoroutine {
+        val (url, width, height, mimeType, identifier) = config
         if (width <= 0 || height <= 0) {
             it.resume(null) { error ->
                 errorLog("Invalid width or height", error)

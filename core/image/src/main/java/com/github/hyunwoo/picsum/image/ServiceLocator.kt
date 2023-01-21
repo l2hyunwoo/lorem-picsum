@@ -2,6 +2,9 @@ package com.github.hyunwoo.picsum.image
 
 import android.content.Context
 import com.github.hyunwoo.picsum.image.cache.disk.DiskCacheInterceptor
+import com.github.hyunwoo.picsum.image.key.HashTransformer
+import com.github.hyunwoo.picsum.image.key.HashTransformerImpl
+import com.github.hyunwoo.picsum.image.load.RemoteResourceFetcher
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -10,6 +13,8 @@ import java.util.concurrent.TimeUnit
 object ServiceLocator {
     @Volatile
     private lateinit var okHttpClient: OkHttpClient
+    val hashTransformer: HashTransformer by lazy { HashTransformerImpl() }
+    val remoteResourceFetcher: RemoteResourceFetcher by lazy { RemoteResourceFetcher() }
 
     fun getOkHttpClient(): OkHttpClient {
         if (!::okHttpClient.isInitialized) {

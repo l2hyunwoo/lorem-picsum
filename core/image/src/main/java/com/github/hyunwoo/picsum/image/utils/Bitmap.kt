@@ -33,10 +33,6 @@ private fun BitmapFactory.Options.calculateInSampleSize(
         val halfWidth = width / 2
 
         while ((halfHeight / inSampleSize) >= requestHeight && (halfWidth / inSampleSize) >= requestWidth) {
-            Log.d(
-                "Nunu",
-                "url: $url requestHeight: $requestHeight requestWidth: $requestWidth inSampleSize: $inSampleSize"
-            )
             inSampleSize *= 2
         }
     }
