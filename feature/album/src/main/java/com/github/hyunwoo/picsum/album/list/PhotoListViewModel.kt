@@ -19,7 +19,6 @@ class PhotoListViewModel @Inject constructor(
     private val pagingSource: GalleryPagingSource
 ) : ViewModel() {
     private val _likedPhotos = MutableStateFlow(emptySet<PhotoUiModel.PhotoParcel>())
-    val likedPhotos = _likedPhotos.asStateFlow().map { it.toList() }
     val notifyPhotoStateChangeFlow = MutableSharedFlow<Int>()
 
     init {
