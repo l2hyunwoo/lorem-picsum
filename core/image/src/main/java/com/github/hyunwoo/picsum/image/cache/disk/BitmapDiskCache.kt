@@ -2,7 +2,6 @@ package com.github.hyunwoo.picsum.image.cache.disk
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import com.github.hyunwoo.picsum.common.log.errorLog
 import com.github.hyunwoo.picsum.image.config.ImageConfig
 import com.github.hyunwoo.picsum.image.config.ImageMimeType

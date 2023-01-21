@@ -3,12 +3,10 @@ package com.github.hyunwoo.picsum.album.detail
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.core.view.doOnAttach
 import com.github.hyunwoo.picsum.album.databinding.ActivityDetailBinding
 import com.github.hyunwoo.picsum.album.model.PhotoUiModel
 import com.github.hyunwoo.picsum.common.activity.BindingActivity
 import com.github.hyunwoo.picsum.common.intent.parcelableExtra
-import com.github.hyunwoo.picsum.common.log.debugLog
 import com.github.hyunwoo.picsum.image.load
 
 class DetailActivity : BindingActivity<ActivityDetailBinding>(ActivityDetailBinding::inflate) {

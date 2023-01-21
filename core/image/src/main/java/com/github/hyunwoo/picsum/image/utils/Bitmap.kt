@@ -2,7 +2,6 @@ package com.github.hyunwoo.picsum.image.utils
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import com.github.hyunwoo.picsum.common.log.debugLog
 
 internal fun ByteArray.decodeSampledBitmap(
     url: String,
@@ -25,7 +24,6 @@ internal fun ByteArray.decodeSampledBitmap(
     requiredWidth: Int
 ): Bitmap {
     require(requiredWidth >= 0 && requiredHeight >= 0) { "Width and height must be greater than 0" }
-    debugLog("Nunu decodeSampledBitmap $requiredWidth $requiredHeight")
     return BitmapFactory.Options().run {
         inJustDecodeBounds = true
         BitmapFactory.decodeByteArray(this@decodeSampledBitmap, 0, size, this)
