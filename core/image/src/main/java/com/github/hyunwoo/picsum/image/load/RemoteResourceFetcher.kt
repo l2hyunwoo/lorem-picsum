@@ -2,36 +2,45 @@ package com.github.hyunwoo.picsum.image.load
 
 import android.graphics.Bitmap
 import com.github.hyunwoo.picsum.common.log.errorLog
+import com.github.hyunwoo.picsum.image.ServiceLocator
 import com.github.hyunwoo.picsum.image.utils.decodeSampledBitmap
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.Response
+import kotlinx.coroutines.suspendCancellableCoroutine
+import okhttp3.*
 import java.io.IOException
+import kotlin.coroutines.resumeWithException
 
 class RemoteResourceFetcher(
-    private val client: OkHttpClient
+    private val client: OkHttpClient = ServiceLocator.getOkHttpClient()
 ) {
-    fun execute(
+    suspend fun execute(
         url: String,
         width: Int,
         height: Int
-    ): Bitmap? {
+    ): Bitmap? = suspendCancellableCoroutine {
         if (width <= 0 || height <= 0) {
-            return null
+            it.resume(null) { error ->
+                errorLog("Invalid width or height", error)
+            }
+            return@suspendCancellableCoroutine
         }
         val request = Request.Builder()
             .url(url)
             .build()
-        var response: Response? = null
-        try {
-            response = client.newCall(request).execute()
-            return response.body?.byteStream()?.readBytes()?.decodeSampledBitmap(url, height, width)
-        } catch (e: IOException) {
-            errorLog("Failed to fetch image from remote", e)
-        } finally {
-            response?.close()
-        }
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                errorLog("Failed to fetch image from remote", e)
+                it.resumeWithException(e)
+            }
 
-        return null
+            override fun onResponse(call: Call, response: Response) {
+                it.resume(
+                    response.body?.byteStream()?.readBytes()
+                        ?.decodeSampledBitmap(url, height, width)
+                ) { error ->
+                    errorLog("OnCancellation error in onResponse", error)
+                    response.close()
+                }
+            }
+        })
     }
 }

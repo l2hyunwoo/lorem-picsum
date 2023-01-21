@@ -1,28 +1,23 @@
 package com.github.hyunwoo.picsum.image
 
+import android.content.Context
 import android.widget.ImageView
-import androidx.lifecycle.findViewTreeLifecycleOwner
-import androidx.lifecycle.lifecycleScope
+import androidx.core.view.doOnAttach
+import androidx.core.view.doOnDetach
 import com.github.hyunwoo.picsum.image.key.HashTransformer
 import com.github.hyunwoo.picsum.image.key.HashTransformerImpl
 import com.github.hyunwoo.picsum.image.load.RemoteResourceFetcher
 import kotlinx.coroutines.*
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 
-internal object ImageLoader {
+object ImageLoader {
     private val mainScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
     private val hashTransformer: HashTransformer = HashTransformerImpl()
-    private val okHttpClient by lazy {
-        OkHttpClient.Builder()
-            .addInterceptor(
-                HttpLoggingInterceptor().apply {
-                    level = HttpLoggingInterceptor.Level.BODY
-                }
-            ).build()
-    }
     private val remoteResourceFetcher by lazy {
-        RemoteResourceFetcher(okHttpClient)
+        RemoteResourceFetcher()
+    }
+
+    fun init(context: Context) {
+        ServiceLocator.init(context)
     }
 
     fun load(url: String, view: ImageView) {
@@ -40,5 +35,7 @@ internal object ImageLoader {
 }
 
 fun ImageView.load(url: String) {
-    ImageLoader.load(url, this)
+    doOnAttach {
+        ImageLoader.load(url, this)
+    }
 }
