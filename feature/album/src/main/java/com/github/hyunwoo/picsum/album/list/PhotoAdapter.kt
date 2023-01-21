@@ -5,9 +5,11 @@ import android.view.ViewGroup
 import androidx.core.view.doOnDetach
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.github.hyunwoo.picsum.album.R
 import com.github.hyunwoo.picsum.album.databinding.ItemPhotoBinding
 import com.github.hyunwoo.picsum.album.databinding.ItemSeperatorBinding
 import com.github.hyunwoo.picsum.album.model.PhotoUiModel
+import com.github.hyunwoo.picsum.common.context.drawableOf
 import com.github.hyunwoo.picsum.common.view.recycerview.ItemDiffCallback
 import com.github.hyunwoo.picsum.image.load
 
@@ -25,8 +27,12 @@ internal class PhotoAdapter(
 ) {
     private lateinit var inflater: LayoutInflater
 
-    fun interface ItemClickListener {
+    interface ItemClickListener {
         fun onItemClick(photo: PhotoUiModel.PhotoParcel)
+
+        fun onLike(photo: PhotoUiModel.PhotoParcel, position: Int)
+
+        fun onDislike(photo: PhotoUiModel.PhotoParcel, position: Int)
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -41,13 +47,27 @@ internal class PhotoAdapter(
         private val binding: ItemPhotoBinding,
         private val listener: ItemClickListener
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(item: PhotoUiModel.PhotoParcel) {
+        fun onBind(item: PhotoUiModel.PhotoParcel, position: Int) {
+            val context = binding.root.context
             binding.txtItem.text = item.author
             binding.root.setOnClickListener {
                 listener.onItemClick(item)
             }
             binding.imgItem.load(item.picture)
-            binding.txtId.text = item.id.toString()
+            binding.imgLike.setOnClickListener {
+                if (item.liked) {
+                    listener.onDislike(item, position)
+                } else {
+                    listener.onLike(item, position)
+                }
+            }
+            binding.imgLike.setImageDrawable(
+                if (item.liked) {
+                    context.drawableOf(R.drawable.ic_favorite)
+                } else {
+                    context.drawableOf(R.drawable.ic_favorite_border)
+                }
+            )
         }
     }
 
@@ -74,7 +94,7 @@ internal class PhotoAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is PhotoViewHolder -> {
-                holder.onBind(getItem(position) as PhotoUiModel.PhotoParcel)
+                holder.onBind(getItem(position) as PhotoUiModel.PhotoParcel, position)
             }
             else -> {}
         }

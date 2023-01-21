@@ -10,7 +10,8 @@ sealed class PhotoUiModel {
         val author: String,
         val width: Int,
         val height: Int,
-        val picture: String
+        val picture: String,
+        var liked: Boolean = false
     ) : Parcelable, PhotoUiModel()
 
     object Separator : PhotoUiModel()

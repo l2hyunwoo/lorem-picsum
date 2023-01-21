@@ -10,3 +10,12 @@ fun Photo.toParcel() = PhotoUiModel.PhotoParcel(
     height = height,
     picture = downloadUrl
 )
+
+fun PhotoUiModel.PhotoParcel.asDomainModel() = Photo(
+    id = id,
+    author = author,
+    width = width,
+    height = height,
+    url = "",
+    downloadUrl = picture
+)
