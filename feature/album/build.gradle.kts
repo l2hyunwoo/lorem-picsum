@@ -14,6 +14,7 @@ dependencies {
     implementation(project(":core:design"))
     implementation(project(":core:common"))
     implementation(project(":core:data"))
+    implementation(project(":core:image"))
     implementation(project(":domain"))
     implementation(libs.fragment)
     implementation(libs.paging.runtime)
