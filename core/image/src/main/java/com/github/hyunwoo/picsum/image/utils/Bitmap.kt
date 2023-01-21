@@ -2,7 +2,7 @@ package com.github.hyunwoo.picsum.image.utils
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.util.Log
+import com.github.hyunwoo.picsum.common.log.debugLog
 
 internal fun ByteArray.decodeSampledBitmap(
     url: String,
@@ -14,18 +14,33 @@ internal fun ByteArray.decodeSampledBitmap(
     return BitmapFactory.Options().run {
         inJustDecodeBounds = true
         BitmapFactory.decodeByteArray(this@decodeSampledBitmap, 0, size, this)
-        inSampleSize = calculateInSampleSize(url, requiredWidth, requiredHeight)
+        inSampleSize = calculateInSampleSize(requiredWidth, requiredHeight)
+        inJustDecodeBounds = false
+        BitmapFactory.decodeByteArray(this@decodeSampledBitmap, 0, size, this)
+    }
+}
+
+internal fun ByteArray.decodeSampledBitmap(
+    requiredHeight: Int,
+    requiredWidth: Int
+): Bitmap {
+    require(requiredWidth >= 0 && requiredHeight >= 0) { "Width and height must be greater than 0" }
+    debugLog("Nunu decodeSampledBitmap $requiredWidth $requiredHeight")
+    return BitmapFactory.Options().run {
+        inJustDecodeBounds = true
+        BitmapFactory.decodeByteArray(this@decodeSampledBitmap, 0, size, this)
+        inSampleSize = calculateInSampleSize(requiredWidth, requiredHeight)
         inJustDecodeBounds = false
         BitmapFactory.decodeByteArray(this@decodeSampledBitmap, 0, size, this)
     }
 }
 
 private fun BitmapFactory.Options.calculateInSampleSize(
-    url: String,
     requestHeight: Int,
     requestWidth: Int
 ): Int {
     val (height, width) = this.run { outHeight to outWidth }
+    if (width <= 0 || height <= 0) return 1
     var inSampleSize = 1L
 
     if (height > requestHeight || width > requestWidth) {
