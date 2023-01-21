@@ -8,3 +8,9 @@ fun errorLog(message: String, throwable: Throwable) {
         Log.e("Picsum", message, throwable)
     }
 }
+
+fun debugLog(message: String) {
+    if (BuildConfig.DEBUG) {
+        Log.d("Picsum", message)
+    }
+}
