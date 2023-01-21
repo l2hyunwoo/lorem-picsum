@@ -12,6 +12,7 @@
         android:id="@+id/img_item"
         android:layout_width="80dp"
         android:layout_height="0dp"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,4 +30,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/img_item"
         tools:text="강아지 고양이 응애" />
+
+    <TextView
+        android:id="@+id/txt_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:maxLines="1"
+        android:textAppearance="?attr/textAppearanceBody2"
+        app:layout_constraintEnd_toEndOf="@id/txt_item"
+        app:layout_constraintTop_toBottomOf="@id/txt_item" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

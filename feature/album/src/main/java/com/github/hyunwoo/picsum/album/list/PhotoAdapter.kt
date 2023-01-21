@@ -2,6 +2,7 @@ package com.github.hyunwoo.picsum.album.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.doOnDetach
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.github.hyunwoo.picsum.album.databinding.ItemPhotoBinding
@@ -33,6 +34,7 @@ internal class PhotoAdapter(
                 listener.onItemClick(item)
             }
             binding.imgItem.load(item.picture)
+            binding.txtId.text = item.id.toString()
         }
     }
 
@@ -41,6 +43,9 @@ internal class PhotoAdapter(
             inflater = LayoutInflater.from(parent.context)
         }
         val binding = ItemPhotoBinding.inflate(inflater, parent, false)
+        binding.root.doOnDetach {
+            binding.imgItem.setImageBitmap(null)
+        }
         return PhotoViewHolder(binding, listener)
     }
 
