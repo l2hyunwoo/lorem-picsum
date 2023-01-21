@@ -23,6 +23,6 @@ class HashTransformerImpl : HashTransformer {
     }
 
     companion object {
-        const val HEX = "KEYKEYNUNUKEYKEY"
+        const val HEX = "0123456789abcdef"
     }
 }

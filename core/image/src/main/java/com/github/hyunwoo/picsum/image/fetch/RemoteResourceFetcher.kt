@@ -1,4 +1,4 @@
-package com.github.hyunwoo.picsum.image.load
+package com.github.hyunwoo.picsum.image.fetch
 
 import android.graphics.Bitmap
 import com.github.hyunwoo.picsum.common.log.errorLog

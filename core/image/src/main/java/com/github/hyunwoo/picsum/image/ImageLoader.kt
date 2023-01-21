@@ -12,7 +12,6 @@ import kotlinx.coroutines.*
 object ImageLoader {
     private val mainScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
     private val hashTransformer: HashTransformer = ServiceLocator.hashTransformer
-    private val remoteResourceFetcher = ServiceLocator.remoteResourceFetcher
 
     fun init(context: Context) {
         ServiceLocator.init(context)
@@ -28,10 +27,7 @@ object ImageLoader {
                 mimeType = ImageMimeType.JPEG,
                 identifier = hashTransformer.execute(url, HashType.SHA256)
             )
-            val bitmap = withContext(Dispatchers.IO) {
-                remoteResourceFetcher.execute(imageConfig)
-            }
-            view.setImageBitmap(bitmap)
+            ImageLoaderDelegate.loadFromRemote(view, imageConfig)
         }
     }
 

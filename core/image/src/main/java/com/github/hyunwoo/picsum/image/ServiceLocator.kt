@@ -1,18 +1,18 @@
 package com.github.hyunwoo.picsum.image
 
 import android.content.Context
-import com.github.hyunwoo.picsum.image.cache.disk.DiskCacheInterceptor
+import com.github.hyunwoo.picsum.image.cache.disk.BitmapDiskCache
+import com.github.hyunwoo.picsum.image.fetch.RemoteResourceFetcher
 import com.github.hyunwoo.picsum.image.key.HashTransformer
 import com.github.hyunwoo.picsum.image.key.HashTransformerImpl
-import com.github.hyunwoo.picsum.image.load.RemoteResourceFetcher
-import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
 
-object ServiceLocator {
+internal object ServiceLocator {
     @Volatile
     private lateinit var okHttpClient: OkHttpClient
+    val diskCache = BitmapDiskCache
     val hashTransformer: HashTransformer by lazy { HashTransformerImpl() }
     val remoteResourceFetcher: RemoteResourceFetcher by lazy { RemoteResourceFetcher() }
 
@@ -33,14 +33,13 @@ object ServiceLocator {
                                 level = HttpLoggingInterceptor.Level.BODY
                             }
                         )
-                        .addInterceptor(DiskCacheInterceptor())
-                        .cache(Cache(context.cacheDir, 50 * 1024 * 1024))
                         .readTimeout(5, TimeUnit.SECONDS)
                         .writeTimeout(10, TimeUnit.SECONDS)
                         .build()
                 }
             }
         }
+        diskCache.init(context)
     }
 }
 
